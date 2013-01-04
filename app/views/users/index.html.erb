@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Pw</th>
     <th>Email</th>
-    <th>Uid</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +12,9 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
+    <td><%= link_to "#{user.name}", user_events_url(:id => user.id) %></td>
     <td><%= user.pw %></td>
     <td><%= user.email %></td>
-    <td><%= user.uid %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path %> | 

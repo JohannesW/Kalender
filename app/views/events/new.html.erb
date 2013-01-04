@@ -1,5 +1,5 @@
-<h1>New event</h1>
+<h1>New user</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', request.env["HTTP_REFERER"] %>

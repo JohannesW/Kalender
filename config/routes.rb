@@ -1,8 +1,26 @@
 Kalender::Application.routes.draw do
-  resources :users
+ 
+
+  
+  resources :users 
+  root :to => "users#index"
 
 
-  resources :events
+
+
+  get "users/:id/events" => "events#index", :as => :user_events
+  get "users/:uid/events/new" => "events#new", :as => :user_new_event
+  get "users/:uid/events/:id" => "events#show", :as => :user_events_show
+  get "users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
+  post "users/:uid/events" => "events#create", :as => :events
+  #post "/events" => "events#create"
+
+  put "users/:uid/events/:id" => "events#update"
+  delete "users/:uid/events/:id" => "events#destroy", :as => :user_delete_event
+ 
+ # post "users/:uid/events/search" => "events#search" , :as => :events_search
+   post "events/search" => "events#search" #, :as => :user_search_events
+
 
 
   # The priority is based upon order of creation:
@@ -11,7 +29,7 @@ Kalender::Application.routes.draw do
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-
+  #match 'events/:search' => 'events/:index'
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

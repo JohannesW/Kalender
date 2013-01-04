@@ -5,10 +5,6 @@
   <%= @user.name %>
 </p>
 
-<p>
-  <b>Pw:</b>
-  <%= @user.pw %>
-</p>
 
 <p>
   <b>Email:</b>
@@ -16,10 +12,12 @@
 </p>
 
 <p>
-  <b>Uid:</b>
-  <%= @user.uid %>
+  
+   <!--<%= link_to "#{@user.name}\'s events", user_events_url(:id => @user.id) %> -->
+   <%= link_to "#{@user.name}\'s events", user_events_url(@user) %> 
+
+  <%= link_to 'new Event', user_new_event_url(:uid => @user.id) %> 
+
 </p>
-
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

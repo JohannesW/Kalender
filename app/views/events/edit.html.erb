@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Show', user_events_show_url(:uid => params[:id], :id => @event.id) %>
+<%= link_to 'Back', user_events_url(:id => @event.user_id) %>

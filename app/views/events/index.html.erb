@@ -1,12 +1,34 @@
 <h1>Listing events</h1>
 
+<div id="searchbar">
+ <%= form_tag :controller => 'events', :action => 'search' do %>
+  <p>
+    Textsuche: -> 
+    <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+  </p>
+  <p>
+    Zeitraumanfang: 
+    <%= datetime_select :dtstart, params[:dtstart], :id => 'date_start' %>
+  </p>
+  <p>
+    Zeitraumende: 
+    <%= datetime_select :dtend, params[:dtend], :id => 'date_end' =%>
+  </p>
+    <%= hidden_field_tag :id, params[:id] %>
+    <%= submit_tag "Search", :name => nil %> 
+    <%= link_to_function "Clear", "$('search_field').clear()" %>
+ <% end %> 
+</div>
+
+
+  
 <table>
   <tr>
-    <th>Dtstart</th>
-    <th>Dtend</th>
+    <th>Date start</th>
+    <th>Date end</th>
     <th>Summary</th>
     <th>Description</th>
-    <th>Uid</th>
+    <th>User name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,14 +40,17 @@
     <td><%= event.dtend %></td>
     <td><%= event.summary %></td>
     <td><%= event.description %></td>
-    <td><%= event.uid %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= event.user.name %></td>
+    
+     <td><%= link_to 'Show', user_events_show_url(:uid => params[:id], :id => event.id) %></td>
+
+    <td><%= link_to 'Edit', user_edit_event_url(:uid => params[:id], :id => event.id) %></td>
+    <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:id], :id => event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
+<%= link_to 'new Event', user_new_event_url(:uid => params[:id]) %> 
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'users', users_path %>

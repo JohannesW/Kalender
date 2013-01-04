@@ -16,16 +16,18 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :pw %><br />
-    <%= f.text_field :pw %>
+    <%= f.label :password %><br />
+    <%= f.password_field :pw %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :pw_confirmation %>
+  </div>
+    
   </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :uid %><br />
-    <%= f.number_field :uid %>
   </div>
   <div class="actions">
     <%= f.submit %>
