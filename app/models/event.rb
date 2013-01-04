@@ -28,27 +28,20 @@ class Event < ActiveRecord::Base
   
   def self.search(search, date_start, date_end, uid)
      date_start = to_Date(date_start)
-     puts date_start;
      date_end = to_Date(date_end)
-     puts date_end
-     #where('user_id = ?', "#{uid}")
-     #find_by_user_id(uid)
+
+     @result_query = Event.where('user_id = ?', "#{uid}")
      if (date_start < date_end)
-      #find_all_by_user_id
-      where('dtstart > ? AND dtstart < ? AND user_id = ?', "#{date_start}", "#{date_end}", "#{uid}")
-     else
-      #find(:all, :conditions =>[ 'user_id = ?', "#{uid}"])
-      find_all_by_user_id(uid)
+     @result_query = @result_query&Event.where('dtstart > ? AND dtstart < ?', "#{date_start}", "#{date_end}")
      end
      if search
-       where('(summary LIKE ? OR description LIKE ?) AND user_id = ?', "%#{search}%", "%#{search}%", "#{uid}")
+       @result_query = @result_query&Event.where('summary LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%")
      end
-   
      
  
   end
  #{:key1=>"2013", :key2=>"1", :key3=>"1", :key4=>"20", :key5=>"10"}
- #{:key1=>"2013", :key2=>"12", :key3=>"1", :key4=>"20", :key5=>"10"}
+ #{:key1=>"2012", :key2=>"12", :key3=>"1", :key4=>"20", :key5=>"10"}
  
   def self.to_Date(date)
    # @retString = ""<<date.values[2];
