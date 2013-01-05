@@ -20,9 +20,9 @@ class Event < ActiveRecord::Base
   end
   
 
-  def self.user_events(id)
-    if User.exists? id
-     find(:all, :conditions => ["user_id = ?", id])
+  def self.user_events(uid)
+    if User.exists? uid
+     find(:all, :conditions => ["user_id = ?", uid])
     end
   end
   
@@ -40,13 +40,15 @@ class Event < ActiveRecord::Base
      
  
   end
+  
+  def self.this_day(uid)
+   where('dtstart BETWEEN ? AND ? AND user_id = ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day, "#{uid}")
+  end
+  
  #{:key1=>"2013", :key2=>"1", :key3=>"1", :key4=>"20", :key5=>"10"}
  #{:key1=>"2012", :key2=>"12", :key3=>"1", :key4=>"20", :key5=>"10"}
- 
   def self.to_Date(date)
-   # @retString = ""<<date.values[2];
     @retString = date.values[2].clone<<"."<<date.values[1].clone<<"."<<date.values[0].clone<<" "<<date.values[3].clone<<":"<<date.values[4].clone
-   puts @retString
    @retVal = DateTime.parse(@retString)
     return @retVal
   end

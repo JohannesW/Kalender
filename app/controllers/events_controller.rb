@@ -4,16 +4,26 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    if User.exists? params[:id]
-      @events = Event.user_events params[:id]
+    if User.exists? params[:uid]
+      @events = Event.user_events params[:uid]
       render 'events/index'
     else
       redirect_to users_path
     end
   end
-
+  def this_day
+    @events = Event.this_day(params[:uid])
+    render "events/index"
+  end
+  def this_week
+    @events = Event.this_week(params[:id])
+  end
+  def this_month
+    @events = Event.this_month(params[:id])
+  end
+  
   def search
-  @events = Event.search(params[:search],params[:dtstart],params[:dtend],params[:id])
+  @events = Event.search(params[:search],params[:dtstart],params[:dtend],params[:uid])
  # render text: "#{params[:dtstart].methods.sort}
  # </br>
  # #{params[:dtstart].find_all}  </br>

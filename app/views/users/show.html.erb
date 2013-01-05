@@ -13,10 +13,9 @@
 
 <p>
   
-   <!--<%= link_to "#{@user.name}\'s events", user_events_url(:id => @user.id) %> -->
-   <%= link_to "#{@user.name}\'s events", user_events_url(@user) %> 
-
-  <%= link_to 'new Event', user_new_event_url(:uid => @user.id) %> 
+   <%= link_to "#{@user.name}\'s events", user_events_url(:uid => @user.id) %>
+  <%= link_to 'new Event', user_new_event_url(:uid => @user.id) %>
+  <%= link_to "#{@user.name}\'s events today", user_events_today_url(:uid => @user.id) %>
 
 </p>
 <%= link_to 'Edit', edit_user_path(@user) %> |

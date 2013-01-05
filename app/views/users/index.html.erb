@@ -12,7 +12,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= link_to "#{user.name}", user_events_url(:id => user.id) %></td>
+    <td><%= link_to "#{user.name}", user_events_url(:uid => user.id) %></td>
     <td><%= user.pw %></td>
     <td><%= user.email %></td>
     <td><%= link_to 'Show', user %></td>

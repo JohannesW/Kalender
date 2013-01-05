@@ -14,7 +14,7 @@
     Zeitraumende: 
     <%= datetime_select :dtend, params[:dtend], :id => 'date_end' =%>
   </p>
-    <%= hidden_field_tag :id, params[:id] %>
+    <%= hidden_field_tag :uid, params[:uid] %>
     <%= submit_tag "Search", :name => nil %> 
     <%= link_to_function "Clear", "$('search_field').clear()" %>
  <% end %> 
@@ -42,15 +42,15 @@
     <td><%= event.description %></td>
     <td><%= event.user.name %></td>
     
-     <td><%= link_to 'Show', user_events_show_url(:uid => params[:id], :id => event.id) %></td>
+     <td><%= link_to 'Show', user_events_show_url(:uid => params[:uid], :id => event.id) %></td>
 
-    <td><%= link_to 'Edit', user_edit_event_url(:uid => params[:id], :id => event.id) %></td>
-    <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:id], :id => event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', user_edit_event_url(:uid => params[:uid], :id => event.id) %></td>
+    <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:uid], :id => event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-<%= link_to 'new Event', user_new_event_url(:uid => params[:id]) %> 
+<%= link_to 'new Event', user_new_event_url(:uid => params[:uid]) %> 
 
 <%= link_to 'users', users_path %>
