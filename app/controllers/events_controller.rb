@@ -28,6 +28,8 @@ class EventsController < ApplicationController
   
   def search
   @events = Event.search(params[:search],params[:dtstart],params[:dtend],params[:uid])
+  params[:dtstart] = nil;   #bugfix -> exceeded available parameter key space
+  params[:dtend] = nil      #bugfix -> exceeded available parameter key space
  # render text: "#{params[:dtstart].methods.sort}
  # </br>
  # #{params[:dtstart].find_all}  </br>
