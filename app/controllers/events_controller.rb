@@ -11,13 +11,17 @@ class EventsController < ApplicationController
       redirect_to users_path
     end
   end
+  
   def this_day
     @events = Event.this_day(params[:uid])
     render "events/index"
   end
+  
   def this_week
-    @events = Event.this_week(params[:id])
+     @events = Event.this_week(params[:date], params[:uid])
+    render "events/index"
   end
+  
   def this_month
     @events = Event.this_month(params[:id])
   end

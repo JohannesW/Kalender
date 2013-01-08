@@ -45,6 +45,25 @@ class Event < ActiveRecord::Base
    where('dtstart BETWEEN ? AND ? AND user_id = ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day, "#{uid}")
   end
   
+  def self.this_week(date, uid)
+    unless date
+      date = DateTime.now
+    else
+      date = Event.to_Date(date)
+    end
+    @date_start = date.clone.to_date.beginning_of_week
+    @date_start = @date_start.to_datetime.beginning_of_day
+    @date_end = date.clone.to_date.end_of_week
+    @date_end = @date_end.to_datetime.end_of_day
+    Event.where('dtstart BETWEEN ? AND ? AND user_id = ?', "#{@date_start}", "#{@date_end}", "#{uid}")
+
+  end
+  
+  def self.begin_of_week(date)
+    @offset = date.cwday
+    (date - @offset)
+  end
+  
  #{:key1=>"2013", :key2=>"1", :key3=>"1", :key4=>"20", :key5=>"10"}
  #{:key1=>"2012", :key2=>"12", :key3=>"1", :key4=>"20", :key5=>"10"}
   def self.to_Date(date)
