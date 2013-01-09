@@ -13,7 +13,7 @@
 
 <p>
   
-   <%= link_to "#{@user.name}\'s events", user_events_url(:uid => @user.id) %>
+  <%= link_to "#{@user.name}\'s events", user_events_url(:uid => @user.id) %>
   <%= link_to 'new Event', user_new_event_url(:uid => @user.id) %>
   <%= link_to "#{@user.name}\'s events today", user_events_today_url(:uid => @user.id) %>
 

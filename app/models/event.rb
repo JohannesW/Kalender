@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
 
   def self.user_events(uid)
     if User.exists? uid
-     find(:all, :conditions => ["user_id = ?", uid])
+     Event.where("user_id = ?", uid).order("dtstart")
     end
   end
   
@@ -51,18 +51,18 @@ class Event < ActiveRecord::Base
     else
       date = Event.to_Date(date)
     end
-    @date_start = date.clone.to_date.beginning_of_week
+    @date_start = date.clone.to_date.at_beginning_of_week
+    puts @date_start
     @date_start = @date_start.to_datetime.beginning_of_day
+    puts @date_start
     @date_end = date.clone.to_date.end_of_week
+    puts @date_end
     @date_end = @date_end.to_datetime.end_of_day
+    puts @date_end
     Event.where('dtstart BETWEEN ? AND ? AND user_id = ?', "#{@date_start}", "#{@date_end}", "#{uid}")
 
   end
-  
-  def self.begin_of_week(date)
-    @offset = date.cwday
-    (date - @offset)
-  end
+
   
  #{:key1=>"2013", :key2=>"1", :key3=>"1", :key4=>"20", :key5=>"10"}
  #{:key1=>"2012", :key2=>"12", :key3=>"1", :key4=>"20", :key5=>"10"}

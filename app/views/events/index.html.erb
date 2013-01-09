@@ -21,7 +21,7 @@
 </div>
 </br>
 <div id="select_range">
-  <%= link_to "#{@events.first.user.name}\'s events today", user_events_today_url(:uid =>params[:uid]) %> |
+  <%= link_to "events today", user_events_today_url(:uid =>params[:uid]) %> | 
   <%= link_to "this week", user_events_week_url(:uid => params[:uid], :date => nil)%> | 
   <%= link_to "all events", user_events_url(:uid => params[:uid]) %>
 </div>
