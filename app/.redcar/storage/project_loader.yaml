@@ -1,0 +1,5 @@
+--- 
+open_files: 
+  - models/event.rb
+  - controllers/events_controller.rb
+  - views/events/index.html.erb

@@ -1,0 +1,146 @@
+1357840191
+Application	/home/flo/mystuff/projekte/rubyonrails/Kalender/config/application.rb	  class Application 
+ApplicationController	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/application_controller.rb	class ApplicationController 
+ApplicationHelper	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/helpers/application_helper.rb	module ApplicationHelper
+BrowsingTest	/home/flo/mystuff/projekte/rubyonrails/Kalender/test/performance/browsing_test.rb	class BrowsingTest 
+ChangeUid	/home/flo/mystuff/projekte/rubyonrails/Kalender/db/migrate/20121227212730_change_uid.rb	class ChangeUid 
+CreateEvents	/home/flo/mystuff/projekte/rubyonrails/Kalender/doc/done/20121206123547_create_events.rb	class CreateEvents 
+CreateUsers	/home/flo/mystuff/projekte/rubyonrails/Kalender/db/migrate/20121206133904_create_users.rb	class CreateUsers 
+DELETE destroy	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "DELETE destroy" do
+DELETE destroy	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "DELETE destroy" do
+Event	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	class Event 
+Events	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/requests/events_spec.rb	describe "Events" do
+EventsController	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	class EventsController 
+EventsHelper	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/helpers/events_helper.rb	module EventsHelper
+GET /events	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/requests/events_spec.rb	describe "GET /events" do
+GET /users	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/requests/users_spec.rb	describe "GET /users" do
+GET edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "GET edit" do
+GET edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "GET edit" do
+GET index	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "GET index" do
+GET index	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "GET index" do
+GET new	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "GET new" do
+GET new	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "GET new" do
+GET show	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "GET show" do
+GET show	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "GET show" do
+Kalender	/home/flo/mystuff/projekte/rubyonrails/Kalender/config/application.rb	module Kalender
+POST create	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "POST create" do
+POST create	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "POST create" do
+PUT update	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "PUT update" do
+PUT update	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "PUT update" do
+TestCase	/home/flo/mystuff/projekte/rubyonrails/Kalender/test/test_helper.rb	class ActiveSupport::TestCase
+User	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/user.rb	class User 
+Users	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/requests/users_spec.rb	describe "Users" do
+UsersController	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	class UsersController 
+UsersHelper	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/helpers/users_helper.rb	module UsersHelper
+assigns a new event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns a new event as @event" do
+assigns a new user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns a new user as @user" do
+assigns a newly created but unsaved event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns a newly created but unsaved event as @event" do
+assigns a newly created but unsaved user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns a newly created but unsaved user as @user" do
+assigns a newly created event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns a newly created event as @event" do
+assigns a newly created user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns a newly created user as @user" do
+assigns all events as @events	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns all events as @events" do
+assigns all users as @users	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns all users as @users" do
+assigns the event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns the event as @event" do
+assigns the requested event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns the requested event as @event" do
+assigns the requested event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns the requested event as @event" do
+assigns the requested event as @event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "assigns the requested event as @event" do
+assigns the requested user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns the requested user as @user" do
+assigns the requested user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns the requested user as @user" do
+assigns the requested user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns the requested user as @user" do
+assigns the user as @user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "assigns the user as @user" do
+change	/home/flo/mystuff/projekte/rubyonrails/Kalender/doc/done/20121206123547_create_events.rb	  def change
+change	/home/flo/mystuff/projekte/rubyonrails/Kalender/db/migrate/20121206133904_create_users.rb	  def change
+change	/home/flo/mystuff/projekte/rubyonrails/Kalender/db/migrate/20121227212730_change_uid.rb	      def change
+concats two strings with spaces	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/helpers/events_helper_spec.rb	it "concats two strings with spaces" do
+concats two strings with spaces	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/helpers/users_helper_spec.rb	it "concats two strings with spaces" do
+create	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def create
+create	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def create
+creates a new Event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "creates a new Event" do
+creates a new User	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "creates a new User" do
+destroy	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def destroy
+destroy	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def destroy
+destroys the requested event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "destroys the requested event" do
+destroys the requested user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "destroys the requested user" do
+dtstart_before_dtend	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def dtstart_before_dtend
+edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def edit
+edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def edit
+events/edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/edit.html.erb_spec.rb	describe "events/edit" do
+events/index	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/index.html.erb_spec.rb	describe "events/index" do
+events/new	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/new.html.erb_spec.rb	describe "events/new" do
+events/show	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/show.html.erb_spec.rb	describe "events/show" do
+index	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def index
+index	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def index
+new	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def new
+new	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def new
+re-renders the 'edit' template	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "re-renders the 'edit' template" do
+re-renders the 'edit' template	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "re-renders the 'edit' template" do
+re-renders the 'new' template	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "re-renders the 'new' template" do
+re-renders the 'new' template	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "re-renders the 'new' template" do
+redirects to the created event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "redirects to the created event" do
+redirects to the created user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "redirects to the created user" do
+redirects to the event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "redirects to the event" do
+redirects to the events list	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "redirects to the events list" do
+redirects to the user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "redirects to the user" do
+redirects to the users list	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "redirects to the users list" do
+renders a list of events	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/index.html.erb_spec.rb	it "renders a list of events" do
+renders a list of users	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/index.html.erb_spec.rb	it "renders a list of users" do
+renders attributes in <p>	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/show.html.erb_spec.rb	it "renders attributes in <p>" do
+renders attributes in <p>	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/show.html.erb_spec.rb	it "renders attributes in <p>" do
+renders new event form	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/new.html.erb_spec.rb	it "renders new event form" do
+renders new user form	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/new.html.erb_spec.rb	it "renders new user form" do
+renders the edit event form	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/events/edit.html.erb_spec.rb	it "renders the edit event form" do
+renders the edit user form	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/edit.html.erb_spec.rb	it "renders the edit user form" do
+routes to #create	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #create" do
+routes to #create	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #create" do
+routes to #destroy	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #destroy" do
+routes to #destroy	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #destroy" do
+routes to #edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #edit" do
+routes to #edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #edit" do
+routes to #index	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #index" do
+routes to #index	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #index" do
+routes to #new	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #new" do
+routes to #new	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #new" do
+routes to #show	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #show" do
+routes to #show	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #show" do
+routes to #update	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	it "routes to #update" do
+routes to #update	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	it "routes to #update" do
+routing	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/users_routing_spec.rb	describe "routing" do
+routing	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/routing/events_routing_spec.rb	describe "routing" do
+search	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def self.search(search, date_start, date_end, uid)
+search	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def search
+show	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def show
+show	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def show
+string concat	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/helpers/events_helper_spec.rb	describe "string concat" do
+string concat	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/helpers/users_helper_spec.rb	describe "string concat" do
+test_homepage	/home/flo/mystuff/projekte/rubyonrails/Kalender/test/performance/browsing_test.rb	  def test_homepage
+this_day	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def self.this_day(uid)
+this_day	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def this_day
+this_month	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def self.this_month(date, uid)
+this_month	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def this_month
+this_week	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def self.this_week(date, uid)
+this_week	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def this_week
+to_Date	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def self.to_Date(date)
+update	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/users_controller.rb	  def update
+update	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/controllers/events_controller.rb	  def update
+updates the requested event	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	it "updates the requested event" do
+updates the requested user	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	it "updates the requested user" do
+user_events	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def self.user_events(uid)
+users/edit	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/edit.html.erb_spec.rb	describe "users/edit" do
+users/index	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/index.html.erb_spec.rb	describe "users/index" do
+users/new	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/new.html.erb_spec.rb	describe "users/new" do
+users/show	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/views/users/show.html.erb_spec.rb	describe "users/show" do
+valid_attributes	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	  def valid_attributes
+valid_attributes	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	  def valid_attributes
+valid_session	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	  def valid_session
+valid_session	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	  def valid_session
+valid_user_id	/home/flo/mystuff/projekte/rubyonrails/Kalender/app/models/event.rb	  def valid_user_id
+with invalid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "with invalid params" do
+with invalid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "with invalid params" do
+with invalid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "with invalid params" do
+with invalid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "with invalid params" do
+with valid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "with valid params" do
+with valid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/events_controller_spec.rb	describe "with valid params" do
+with valid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "with valid params" do
+with valid params	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/controllers/users_controller_spec.rb	describe "with valid params" do
+works! (now write some real specs)	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/requests/users_spec.rb	it "works! (now write some real specs)" do
+works! (now write some real specs)	/home/flo/mystuff/projekte/rubyonrails/Kalender/spec/requests/events_spec.rb	it "works! (now write some real specs)" do

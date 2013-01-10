@@ -8,6 +8,7 @@ Kalender::Application.routes.draw do
   get "/events" => redirect("users")
 
   get "/users/:uid/events/today" => "events#this_day", :as => :user_events_today
+  get "/users/:uid/events/month" => "events#this_month", :as => :user_events_month
   get "/users/:uid/events/week" => "events#this_week", :as => :user_events_week
 
   get "/users/:uid/events" => "events#index", :as => :user_events

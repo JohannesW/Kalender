@@ -23,7 +23,9 @@ class EventsController < ApplicationController
   end
   
   def this_month
-    @events = Event.this_month(params[:id])
+    @events = Event.this_month(params[:date], params[:uid])
+    render "events/index"
+#    render text: "#{@events.all}"
   end
   
   def search

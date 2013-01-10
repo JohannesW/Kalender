@@ -32,7 +32,7 @@ class Event < ActiveRecord::Base
 
      @result_query = Event.where('user_id = ?', "#{uid}").order('dtstart')
      if (date_start < date_end)
-     @result_query = @result_query&Event.where('dtstart > ? AND dtstart < ?', "#{date_start-1.day}", "#{date_end}").order('dtstart') # bugfix, damit startdate richtig ausgewählt wird: -1.day
+     @result_query = @result_query&Event.where('dtstart > ? AND dtstart < ?', "#{date_start-1.day}", "#{date_end}").order('dtstart') # bugfix, damit startdate richtig ausgewï¿½hlt wird: -1.day
      end
      if search
        @result_query = @result_query&Event.where('summary LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%").order('dtstart')
@@ -60,7 +60,21 @@ class Event < ActiveRecord::Base
     @date_end = @date_end.clone.to_datetime.end_of_day
     puts @date_end
     Event.where('dtstart BETWEEN ? AND ? AND user_id = ?', "#{@date_start-1.day}", "#{@date_end}", "#{uid}").order('dtstart')
-
+  end
+  
+  def self.this_month(date, uid)
+    unless date
+      date = DateTime.now
+    else
+      date = Event.to_Date(date)
+    end
+    @date_start = date.clone.to_date.beginning_of_month
+    @date_start = @date_start.clone.to_datetime
+    puts @date_start
+    @date_end = date.clone.to_date.end_of_month
+    @date_end = @date_end.clone.to_datetime.end_of_day
+    puts @date_end
+    Event.where('dtstart BETWEEN ? AND ? AND user_id = ?', "#{@date_start-1.day}", "#{@date_end}", "#{uid}").order('dtstart')
   end
 
   
