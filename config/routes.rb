@@ -5,12 +5,12 @@ Kalender::Application.routes.draw do
   resources :users 
   root :to => "users#index"
 
+  get "/events" => redirect("users")
 
   get "/users/:uid/events/today" => "events#this_day", :as => :user_events_today
   get "/users/:uid/events/week" => "events#this_week", :as => :user_events_week
 
   get "/users/:uid/events" => "events#index", :as => :user_events
-
   get "/users/:uid/events/new" => "events#new", :as => :user_new_event
 
   get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
@@ -19,7 +19,7 @@ Kalender::Application.routes.draw do
   delete "/users/:uid/events/:id" => "events#destroy", :as => :user_delete_event
   post "/users/:uid/events/search" => "events#search" , :as => :events_search
   match "/users/:uid/events/search" => redirect("users/:uid/events")  
-  get "/users/:uid/events/:id" => "events#show", :as => :user_events_show, id: /[0-9]+/ 
+  get "/users/:uid/events/:id" => "events#show", :as => :user_events_show, id: /[0-9]+/
 
 
 
