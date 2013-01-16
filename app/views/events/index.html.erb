@@ -6,12 +6,71 @@
 <script>
   
   
+   // var $calE = null;
+  
+    function fetchEvents(start, end, callBack){
+       jQuery.ajax({
+       type : 'GET',
+       data : {
+	'dtstart' : Math.round(start.getTime() / 1000),
+	'dtend' : Math.round(end.getTime() / 1000),
+	'uid': '<%= escape_javascript(params[:uid]) %>'
+       },
+       url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
+ //	 url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
+ //      url : '/users/:uid/events/get_json',
+
+       success : function(data) {
+       if (!data) {
+	alert('problem while getting calendar events');
+	return;
+       }
+	
+       callBack(data);
+  
+      },
+       error : function(XMLHttpRequest, textStatus, errorThrown) {
+       },
+       complete : function(XMLHttpRequest, textStatus) {
+      }
+      });
+       
+    }
+  
+  function renderEvents() {
+
+    var start = $('#calendar').fullCalendar('getView').start;
+    alert(start);
+    //var start = $calE.fullCalendar('getView').start;
+
+    var startts = start.getTime() * .001;    
+   
+    var end = $('#calendar').fullCalendar('getView').end;
+    var endts = end.getTime() * .001;
+   
+    jQuery.ajax({
+     type : 'GET',
+     dataType : 'json',
+     
+     data : {
+      'dtstart' : startts,
+      'dtend' : endts,
+      'uid' : '<%= escape_javascript(params[:uid]) %>'
+     },
+     //url : '/users/:uid/events/get_json',
+            url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
+     success : function(data, textStatus) {
+      
+     },
+     error : function(XMLHttpRequest, textStatus, errorThrown) {
+     },
+     complete : function(XMLHttpRequest, textStatus) {
+    }
+    });
+    // alert('finished rendering RequestItems');
+
+  }
   $(document).ready(function(){
-  
-  
-  
-  
-  
 		var $tabs = $("#displaymodetab").tabs(
 			{
 				ajaxOptions : {
@@ -24,22 +83,39 @@
 				}
 			});	
   
-  
+    
+
       // page is now ready, initialize the calendar...
-		  $('#calendar').fullCalendar({
-			
-			
+		$calE=  $('#calendar').fullCalendar({
+			 loading: function(bool){
+			  if (bool) 
+			      $('#loading').show();
+			  else 
+			      $('#loading').hide();
+		      },
+				    viewDisplay : function(view) {
+			  renderEvents();
+			},
 			header : {
 			left : 'prev,next today',
 			center : 'title',
 			right : 'month,agendaWeek,agendaDay'
 			},
 
-			aspectRatio : 2
-			,	
-			
-			 eventSources: [
-
+			aspectRatio : 2,	
+			eventSources : [ {
+			events : function(start, end, callback) {
+			 fetchEvents(start, end, callback);
+			}}],
+			color : 'yellow', // an option!
+			textColor : 'black', // an option!
+			backgroundColor : 'green',
+			className : 'requestItem'
+		       }
+		     
+		       //]
+			/* eventSources: [
+				  
 				[
 				{
 					color: 'yellow',
@@ -56,7 +132,7 @@
 					start  : '2013-01-14 12:30:00',
 					allDay : false // will make the time show
 				}
-				]
+				]*/
 				
 				/*,
 				// your event source
@@ -76,10 +152,11 @@
 
 				// any other sources...
 
-			]
+		//	]
 			
 			
-	});
+	//}
+	);
   });
 </script>
 

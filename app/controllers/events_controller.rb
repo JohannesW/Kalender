@@ -6,7 +6,11 @@ class EventsController < ApplicationController
   def index
     if User.exists? params[:uid]
       @events = Event.user_events params[:uid]
-      render 'events/index'
+      respond_to do |format|
+          format.html { render 'events/index'}
+          format.json { render text: @events.to_json }
+      end
+      
     else
       redirect_to users_path
     end
@@ -26,6 +30,15 @@ class EventsController < ApplicationController
     @events = Event.this_month(params[:date], params[:uid])
     render "events/index"
 #    render text: "#{@events.all}"
+  end
+  
+  def get_json
+   # render text: " #{params[:uid]},  #{params[:dtstart]},  #{params[:dtend]}" 
+   if params[:uid] && params[:dtstart] && params[:dtend]
+      @events = Event.get_events(params[:dtstart], params[:dtend], params[:uid])
+   end
+    render text: @events.to_json 
+    #"@events.to_json: #{@events.to_json}, #{params[:uid]},  #{params[:dtstart]},  #{params[:dtend]}"
   end
   
   def search

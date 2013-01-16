@@ -1,7 +1,7 @@
 class ChangeUid <ActiveRecord::Migration
       def change
       drop_table :users
-      drop_table :events
+      
       
       create_table :users do |t|
       t.string :name

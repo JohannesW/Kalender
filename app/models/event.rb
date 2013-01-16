@@ -19,7 +19,14 @@ class Event < ActiveRecord::Base
     end
   end
   
-
+  def self.get_events(dtstart, dtend, uid)
+    if User.exists? uid
+      dtstart = Time.at(dtstart.to_i).to_datetime
+      dtend = Time.at(dtend.to_i).to_date.end_of_day.to_datetime
+      Event.where("user_id = ? AND dtstart BETWEEN ? AND ?", "#{uid}", "#{dtstart}", "#{dtend}").order('dtstart')
+    end
+  end
+  
   def self.user_events(uid)
     if User.exists? uid
      Event.where("user_id = ?", uid).order("dtstart")
