@@ -197,7 +197,6 @@
   <%= link_to "all events", user_events_url(:uid => params[:uid]) %>
 </div>
 
-
 </br>
 <%= link_to 'new Event', user_new_event_url(:uid => params[:uid]) %> | 
 
@@ -251,7 +250,7 @@
 						   <td><%= link_to 'Show', user_events_show_url(:uid => params[:uid], :id => event.id) %></td>
   
 						  <td><%= link_to 'Edit', user_edit_event_url(:uid => params[:uid], :id => event.id) %></td>
-						  <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:uid], :id => event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						  <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:uid], :id => event.id)  , method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 					    </tr>
 					  <% end %>
 					</table>

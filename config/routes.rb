@@ -4,11 +4,10 @@ Kalender::Application.routes.draw do
   
   resources :users
   resources :sessions
-  root :to => "events#index" #"users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"
-  
+ # root :to => "events#index" #"users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
+  get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
+  delete "/users/:uid/events/:id" => "events#destroy", :as => :user_delete_event
+
   get "/events" => redirect("users")
   get "/users/:uid/events/get_json" => "events#get_json", :as => :user_events_get_json
   get "/users/:uid/events/today" => "events#this_day", :as => :user_events_today
@@ -18,15 +17,17 @@ Kalender::Application.routes.draw do
   get "/users/:uid/events" => "events#index", :as => :user_events
   get "/users/:uid/events/new" => "events#new", :as => :user_new_event
 
-  get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
+  #get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
   post "/users/:uid/events" => "events#create", :as => :events
   put "/users/:uid/events/:id" => "events#update"
-  delete "/users/:uid/events/:id" => "events#destroy", :as => :user_delete_event
+  #delete "/users/:uid/events/:id" => "events#destroy", :as => :user_delete_event
   post "/users/:uid/events/search" => "events#search" , :as => :events_search
   match "/users/:uid/events/search" => redirect("users/:uid/events")  
   get "/users/:uid/events/:id" => "events#show", :as => :user_events_show, id: /[0-9]+/
 
-
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
 
 
   # The priority is based upon order of creation:
