@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= session[:user_id] ? link_to('Log out', log_out_url) : link_to('Login', log_in_url) %>
 <%= yield %>
 
 </body>

@@ -86,7 +86,8 @@
     
 
       // page is now ready, initialize the calendar...
-		$calE=  $('#calendar').fullCalendar({
+		/*$calE=*/$('#calendar').fullCalendar({
+			  editable: true,
 			 loading: function(bool){
 			  if (bool) 
 			      $('#loading').show();
@@ -103,10 +104,13 @@
 			},
 
 			aspectRatio : 2,	
-			eventSources : [ {
+			/*eventSources : [ {
 			events : function(start, end, callback) {
 			 fetchEvents(start, end, callback);
-			}}],
+			}}],*/
+			events: function(start, end, callback){
+			  fetchEvents(start, end, callback)
+			},
 			color : 'yellow', // an option!
 			textColor : 'black', // an option!
 			backgroundColor : 'green',
@@ -236,20 +240,20 @@
 						<th></th>
 					  </tr>
 
-					<% @events.each do |event| %>
-					  <tr>
-						<td><%= event.dtstart %></td>
-						<td><%= event.dtend %></td>
-						<td><%= event.summary %></td>
-						<td><%= event.description %></td>
-						<td><%= event.user.name %></td>
-						
-						 <td><%= link_to 'Show', user_events_show_url(:uid => params[:uid], :id => event.id) %></td>
-
-						<td><%= link_to 'Edit', user_edit_event_url(:uid => params[:uid], :id => event.id) %></td>
-						<td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:uid], :id => event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-					  </tr>
-					<% end %>
+					  <% @events.each do |event| %>
+					    <tr>
+						  <td><%= event.dtstart %></td>
+						  <td><%= event.dtend %></td>
+						  <td><%= event.summary %></td>
+						  <td><%= event.description %></td>
+						  <td><%= event.user.name %></td>
+						  
+						   <td><%= link_to 'Show', user_events_show_url(:uid => params[:uid], :id => event.id) %></td>
+  
+						  <td><%= link_to 'Edit', user_edit_event_url(:uid => params[:uid], :id => event.id) %></td>
+						  <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:uid], :id => event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					    </tr>
+					  <% end %>
 					</table>
 					
 					

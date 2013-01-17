@@ -2,9 +2,13 @@ Kalender::Application.routes.draw do
  
 
   
-  resources :users 
-  root :to => "users#index"
-
+  resources :users
+  resources :sessions
+  root :to => "events#index" #"users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  
   get "/events" => redirect("users")
   get "/users/:uid/events/get_json" => "events#get_json", :as => :user_events_get_json
   get "/users/:uid/events/today" => "events#this_day", :as => :user_events_today

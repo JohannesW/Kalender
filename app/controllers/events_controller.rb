@@ -36,8 +36,12 @@ class EventsController < ApplicationController
    # render text: " #{params[:uid]},  #{params[:dtstart]},  #{params[:dtend]}" 
    if params[:uid] && params[:dtstart] && params[:dtend]
       @events = Event.get_events(params[:dtstart], params[:dtend], params[:uid])
+      events=[]
+      @events.each do |event|
+      events << {:id => event.id, :title => event.summary, :description => event.description , :start => "#{event.dtstart}", :end => "#{event.dtend}"}
+    end
    end
-    render text: @events.to_json 
+    render text: events.to_json 
     #"@events.to_json: #{@events.to_json}, #{params[:uid]},  #{params[:dtstart]},  #{params[:dtend]}"
   end
   

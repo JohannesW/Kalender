@@ -9,6 +9,7 @@ gem 'rails', '3.2.9'
 
 #calendar
 gem 'ri_cal'
+gem 'bcrypt-ruby', :require => "bcrypt"
 
 group :production do
   gem 'pg', '0.12.2'
@@ -37,7 +38,6 @@ end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
- gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
