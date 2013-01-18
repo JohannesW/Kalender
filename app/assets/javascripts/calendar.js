@@ -8,7 +8,7 @@ var calendar = $("#calendar");
 
 function renderCalendar() {
 	
-	calendar .fullCalendar({
+	calendar.fullCalendar({
 
 		viewDisplay : function(view) {
 

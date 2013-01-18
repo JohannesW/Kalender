@@ -5,7 +5,7 @@ Kalender::Application.routes.draw do
   resources :users
   resources :sessions
 
-  root :to => "events#index" #"users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
+  root :to => "users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
  
   get "/events" => redirect("users")
   get "/users/:uid/events/get_json" => "events#get_json", :as => :user_events_get_json
