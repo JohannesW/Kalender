@@ -12,6 +12,6 @@
 
 //= require jquery
 //= require jquery-ui
-//= require fullcalendar-1.5.4
+//= require fullcalendar
 //= require jquery_ujs
 //= require_tree .

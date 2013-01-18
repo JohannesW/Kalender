@@ -1,4 +1,4 @@
-<h1>Listing events</h1>
+<%#= javascript_include_tag "application", :recursive => true %>
 
 
 
@@ -197,6 +197,8 @@
   <%= link_to "all events", user_events_url(:uid => params[:uid]) %>
 </div>
 
+					  
+
 </br>
 <%= link_to 'new Event', user_new_event_url(:uid => params[:uid]) %> | 
 
@@ -247,10 +249,11 @@
 						  <td><%= event.description %></td>
 						  <td><%= event.user.name %></td>
 						  
-						   <td><%= link_to 'Show', user_events_show_url(:uid => params[:uid], :id => event.id) %></td>
-  
-						  <td><%= link_to 'Edit', user_edit_event_url(:uid => params[:uid], :id => event.id) %></td>
-						  <td><%= link_to 'Destroy', user_delete_event_url(:uid => params[:uid], :id => event.id)  , method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+						   <td><%= button_to 'Show', user_events_show_url(:uid => params[:uid], :id => event.id), :method => :get %></td>
+						  <td><%= button_to 'Edit', user_edit_event_url(:uid => params[:uid], :id => event.id), :method => :get %></td>
+						  <td><%= button_to "delete", [event.user, event], :method=>:delete, :class=>:destroy, :confirm => 'Are you sure?' %>
+						      <%#= link_to "Destroy", user_event_url(event.user, event), :method => :delete,  :confirm => 'Are you sure?'%></td>
+
 					    </tr>
 					  <% end %>
 					</table>
