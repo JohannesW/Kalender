@@ -29,7 +29,6 @@ class EventsController < ApplicationController
   def this_month
     @events = Event.this_month(params[:date], params[:uid])
     render "events/index"
-#    render text: "#{@events.all}"
   end
   
   def get_json
@@ -129,8 +128,6 @@ class EventsController < ApplicationController
         format.html { redirect_to user_events_show_url(:id => @event.id, :uid => @event.user_id), notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
-      #format.html { render action: "edit" }
-      #user_edit_event
         format.html { render action: "edit" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -140,14 +137,11 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-  #  render text: "DESTROY"#@event.user.name
-
     @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
       format.html { redirect_to user_events_url(:uid => session[:user_id]) }
-      #format.html { redirect_to users }
       format.json { head :no_content }
     end
   end

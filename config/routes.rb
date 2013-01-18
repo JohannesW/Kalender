@@ -5,11 +5,8 @@ Kalender::Application.routes.draw do
   resources :users
   resources :sessions
 
- # root :to => "events#index" #"users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
-  get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
- #match "/users/:uid/events/:id"  => 
- #delete "/users/:uid/events/:id" => "events#destroy", :as => :delete_event
-
+  root :to => "events#index" #"users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
+ 
   get "/events" => redirect("users")
   get "/users/:uid/events/get_json" => "events#get_json", :as => :user_events_get_json
   get "/users/:uid/events/today" => "events#this_day", :as => :user_events_today
@@ -22,7 +19,6 @@ Kalender::Application.routes.draw do
   get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
   post "/users/:uid/events" => "events#create", :as => :events
   put "/users/:uid/events/:id" => "events#update"
-  #delete "/events/:id" => "events#destroy"
   delete "/users/:uid/events/:id" => "events#destroy", :as => :user_event
   post "/users/:uid/events/search" => "events#search" , :as => :events_search
   match "/users/:uid/events/search" => redirect("users/:uid/events")  
