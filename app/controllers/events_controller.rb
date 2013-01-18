@@ -12,24 +12,51 @@ class EventsController < ApplicationController
       end
       
     else
-      redirect_to user_events_url(:uid => session[:user_id]) 
-     # redirect_to users_path
+      if session[:user_id]
+          redirect_to user_events_url(:uid => session[:user_id]) 
+      else
+        redirect_to log_in_url
+      end
     end
   end
   
   def this_day
-    @events = Event.this_day(params[:uid])
-    render "events/index"
+    if session[:user_id] 
+      if "#{params[:uid]}" == "#{session[:user_id]}"
+        @events = Event.this_day(params[:uid])
+        render "events/index"
+      else
+        redirect_to user_events_today_url(:uid => session[:user_id])
+      end
+    else
+      redirect_to log_in_url
+    end
   end
   
   def this_week
-     @events = Event.this_week(params[:date], params[:uid])
-    render "events/index"
+    if session[:user_id]
+      if "#{params[:uid]}" == "#{session[:user_id]}"
+        @events = Event.this_week(params[:date], params[:uid])
+        render "events/index"
+      else
+        redirect_to user_events_week_url(:date => params[:date], :uid => session[:user_id])
+      end
+    else
+      redirect_to log_in_url
+    end
   end
   
   def this_month
-    @events = Event.this_month(params[:date], params[:uid])
-    render "events/index"
+    if session[:user_id]
+      if "#{params[:uid]}" == "#{session[:user_id]}"
+        @events = Event.this_month(params[:date], params[:uid])
+        render "events/index"
+      else
+        redirect to user_events_month_url(:date => params[:date], :uid => session[:user_id])
+      end
+    else
+      redirect_to log_in_url
+    end
   end
   
   def get_json
