@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    if User.exists? params[:uid]
+    if "#{params[:uid]}" == "#{session[:user_id]}"
       @events = Event.user_events params[:uid]
       respond_to do |format|
           format.html { render 'events/index'}
@@ -12,7 +12,8 @@ class EventsController < ApplicationController
       end
       
     else
-      redirect_to users_path
+      redirect_to user_events_url(:uid => session[:user_id]) 
+     # redirect_to users_path
     end
   end
   
