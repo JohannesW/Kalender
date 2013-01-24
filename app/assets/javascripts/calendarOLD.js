@@ -1,3 +1,5 @@
+
+
 //we need to provide an html div container, maybe with min-width/height attribute and id="calendar" to be pimped by jquery
 
 var calendar = $("#calendar");

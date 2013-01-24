@@ -4,8 +4,7 @@
 
 
 <script>
-  
-  
+
    // var $calE = null;
   
     function fetchEvents(start, end, callBack){
@@ -17,19 +16,17 @@
 	'uid': '<%= escape_javascript(params[:uid]) %>'
        },
        url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
- //	 url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
- //      url : '/users/:uid/events/get_json',
 
        success : function(data) {
        if (!data) {
 	alert('problem while getting calendar events');
 	return;
        }
-	
+  //     alert(data);	
        callBack(data);
-  
       },
        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	
        },
        complete : function(XMLHttpRequest, textStatus) {
       }
@@ -38,16 +35,13 @@
     }
   
   function renderEvents() {
-
     var start = $('#calendar').fullCalendar('getView').start;
-    alert(start);
-    //var start = $calE.fullCalendar('getView').start;
+    
 
     var startts = start.getTime() * .001;    
    
     var end = $('#calendar').fullCalendar('getView').end;
     var endts = end.getTime() * .001;
-   
     jQuery.ajax({
      type : 'GET',
      dataType : 'json',
@@ -58,18 +52,25 @@
       'uid' : '<%= escape_javascript(params[:uid]) %>'
      },
      //url : '/users/:uid/events/get_json',
-            url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
+     url : '/users/<%= escape_javascript(params[:uid]) %>/events/get_json',
      success : function(data, textStatus) {
-      
+ //    alert(startts  + " " + endts + " " + data[0]['title']); 
+      for (i = 0; i < data.length; i++){
+       $("#calendar").fullCalendar('renderEvent', data[i]);
+      }
      },
      error : function(XMLHttpRequest, textStatus, errorThrown) {
+   //   alert("Damn");
      },
      complete : function(XMLHttpRequest, textStatus) {
+      
     }
     });
     // alert('finished rendering RequestItems');
 
   }
+  
+  
   $(document).ready(function(){
 		var $tabs = $("#displaymodetab").tabs(
 			{
@@ -84,18 +85,19 @@
 			});	
   
     
-
+ 
       // page is now ready, initialize the calendar...
-		/*$calE=*/$('#calendar').fullCalendar({
+		$('#calendar').fullCalendar({
+			  lazyFetching: false,
 			  editable: true,
-			 loading: function(bool){
-			  if (bool) 
-			      $('#loading').show();
-			  else 
-			      $('#loading').hide();
-		      },
-				    viewDisplay : function(view) {
-			  renderEvents();
+			// loading: function(bool){
+			//  if (bool) 
+			//      $('#loading').show();
+			//  else 
+			//      $('#loading').hide();
+			//  },
+			viewDisplay : function(view) {
+			  var data = renderEvents();
 			},
 			header : {
 			left : 'prev,next today',
@@ -103,64 +105,26 @@
 			right : 'month,agendaWeek,agendaDay'
 			},
 
-			aspectRatio : 2,	
-			/*eventSources : [ {
-			events : function(start, end, callback) {
-			 fetchEvents(start, end, callback);
-			}}],*/
-			events: function(start, end, callback){
-			  fetchEvents(start, end, callback)
-			},
+			eventSources : [{
+			events :
+			
+			  function(start, end, callback){
+			  fetchEvents(start, end, callback);
+			  },
+			
+			//{"id" : 13, "title":"smash","start":"2013-01-18","end":"2013-01-18"},
+			//{"id" : 14, "title":"bladescription","description":"watn schei\u00df","start":"2013-01-23","end":"2013-01-23"}
+			
+			}],
 			color : 'yellow', // an option!
 			textColor : 'black', // an option!
 			backgroundColor : 'green',
 			className : 'requestItem'
 		       }
 		     
-		       //]
-			/* eventSources: [
-				  
-				[
-				{
-					color: 'yellow',
-					title  : 'event1',
-					start  : '2013-01-10'
-				},
-				{
-					title  : 'event2',
-					start  : '2013-01-10',
-					end    : '2013-01-13'
-				},
-				{
-					title  : 'event3',
-					start  : '2013-01-14 12:30:00',
-					allDay : false // will make the time show
-				}
-				]*/
-				
-				/*,
-				// your event source
-				{
-					url: '/myfeed.php',
-					type: 'POST',
-					data: {
-						custom_param1: 'something',
-						custom_param2: 'somethingelse'
-					},
-					error: function() {
-						alert('there was an error while fetching events!');
-					},
-					color: 'yellow',   // a non-ajax option
-					textColor: 'black' // a non-ajax option
-				}*/
 
-				// any other sources...
-
-		//	]
-			
-			
-	//}
 	);
+
   });
 </script>
 
@@ -172,9 +136,17 @@
 
 <div id="searchbar">
  <%= form_tag :controller => 'events', :action => 'search' do %>
-  <p>
-    Textsuche: -> 
-    <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+    <p>
+    <table>
+      <tr>
+	<td>
+	  Textsuche: 
+	</td>
+	<td>
+	   <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+	</td>
+      </tr>
+    </table>
   </p>
   <p>
     Zeitraumanfang: 
@@ -189,6 +161,8 @@
     <%= link_to_function "Clear", "$('search_field').clear()" %>
  <% end %> 
 </div>
+
+
 </br>
 <div id="select_range">
   <%= link_to "events today", user_events_today_url(:uid =>params[:uid]) %> | 

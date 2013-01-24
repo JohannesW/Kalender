@@ -61,11 +61,12 @@ class EventsController < ApplicationController
   
   def get_json
    # render text: " #{params[:uid]},  #{params[:dtstart]},  #{params[:dtend]}" 
-   if params[:uid] && params[:dtstart] && params[:dtend]
-      @events = Event.get_events(params[:dtstart], params[:dtend], params[:uid])
+   #if params[:uid] && params[:dtstart] && params[:dtend]
+   if params[:dtstart] && params[:dtend]
+      @events = Event.get_events(params[:dtstart], params[:dtend], session[:user_id])
       events=[]
       @events.each do |event|
-      events << {:id => event.id, :title => event.summary, :description => event.description , :start => "#{event.dtstart}", :end => "#{event.dtend}"}
+      events << {'id' => event.id, 'title' => event.summary, 'description' => event.description , 'start' => "#{event.dtstart.to_date.strftime('%Y-%m-%d')}", :end => "#{event.dtend.to_date.strftime('%Y-%m-%d')}"}
     end
    end
     render text: events.to_json 

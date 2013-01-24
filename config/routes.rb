@@ -8,11 +8,12 @@ Kalender::Application.routes.draw do
   root :to => "users#matches?" # "sessions#new" #"users#index" # "users#matches?" 
  
   get "/events" => redirect("users")
+ # get "/users/:uid/users/:uid/events/get_json" => redirect("users/:uid/events/get_json")  
+  #get "events/get_json" => "events#get_json", :as => :user_events_get_json
   get "/users/:uid/events/get_json" => "events#get_json", :as => :user_events_get_json
   get "/users/:uid/events/today" => "events#this_day", :as => :user_events_today
   get "/users/:uid/events/month" => "events#this_month", :as => :user_events_month
   get "/users/:uid/events/week" => "events#this_week", :as => :user_events_week
-
   get "/users/:uid/events" => "events#index", :as => :user_events
   get "/users/:uid/events/new" => "events#new", :as => :user_new_event
 
