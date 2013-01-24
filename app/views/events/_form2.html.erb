@@ -1,6 +1,6 @@
 <%= "#{@event.dtstart}"  %>
 
-<%= form_for(@event, :url => user_edit_event_url(@event)) do |f| %>
+<%= form_for(@event, :url => user_edit_event_url(:id => @event.id, :uid => @event.user_id)) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>

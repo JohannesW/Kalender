@@ -62,11 +62,11 @@ class EventsController < ApplicationController
   def get_json
    # render text: " #{params[:uid]},  #{params[:dtstart]},  #{params[:dtend]}" 
    #if params[:uid] && params[:dtstart] && params[:dtend]
-   if params[:dtstart] && params[:dtend]
+   if params[:dtstart] && params[:dtend] && session[:user_id]
       @events = Event.get_events(params[:dtstart], params[:dtend], session[:user_id])
       events=[]
       @events.each do |event|
-      events << {'id' => event.id, 'title' => event.summary, 'description' => event.description , 'start' => "#{event.dtstart.to_date.strftime('%Y-%m-%d')}", :end => "#{event.dtend.to_date.strftime('%Y-%m-%d')}"}
+      events << {'id' => event.id, 'title' => event.summary, 'description' => event.description , 'start' => "#{event.dtstart.iso8601}", :end => "#{event.dtend.iso8601}",  :allDay => false} #strftime('%Y-%m-%d %H:%M:%S')
     end
    end
     render text: events.to_json 
@@ -77,18 +77,11 @@ class EventsController < ApplicationController
   @events = Event.search(params[:search],params[:dtstart],params[:dtend],params[:uid])
   params[:dtstart] = nil;   #bugfix -> exceeded available parameter key space
   params[:dtend] = nil      #bugfix -> exceeded available parameter key space
- # render text: "#{params[:dtstart].methods.sort}
- # </br>
- # #{params[:dtstart].find_all}  </br>
- # values[0]: #{params[:dtstart].values[0]}  </br>
- # values[1]: #{params[:dtstart].values[1]}  </br>
- # values[2]: #{params[:dtstart].values[2]}  </br>
- # values[3]: #{params[:dtstart].values[3]}  </br>
- # values[4]: #{params[:dtstart].values[4]}  </br>
- # #{params[:dtstart].values[2].class}  </br>
- # "
- # #{params[:search]},,#{params[:dtend]},#{params[:id]}
-   render 'events/index'
+ 
+  respond_to do |format|
+          format.html { render 'events/index'}
+          format.json { render text: @events.to_json }
+  end
   
   end
 
@@ -124,6 +117,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+   # @uid = @event.user_id
     render "edit"
   end
 

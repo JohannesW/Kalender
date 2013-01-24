@@ -19,7 +19,7 @@ Kalender::Application.routes.draw do
 
   get "/users/:uid/events/:id/edit" => "events#edit", :as => :user_edit_event
   post "/users/:uid/events" => "events#create", :as => :events
-  put "/users/:uid/events/:id" => "events#update"
+  put "/users/:uid/events/:id/edit" => "events#update"
   delete "/users/:uid/events/:id" => "events#destroy", :as => :user_event
   post "/users/:uid/events/search" => "events#search" , :as => :events_search
   match "/users/:uid/events/search" => redirect("users/:uid/events")  
