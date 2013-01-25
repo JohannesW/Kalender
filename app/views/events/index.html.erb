@@ -23,7 +23,9 @@
 	return;
        }
   //     alert(data);	
-       callBack(data);
+      // 
+       	callBack(data);
+
       },
        error : function(XMLHttpRequest, textStatus, errorThrown) {
 	
@@ -85,19 +87,27 @@
 			});	
   
     
- 
+	var viewHash = new Object();
       // page is now ready, initialize the calendar...
 		$('#calendar').fullCalendar({
-			  lazyFetching: false,
+			  lazyFetching: true,
+			  columnFormat: {
+			    month: 'ddd',
+			    week: 'ddd d.M',
+			    day: 'ddd d.M'
+			  },
 			  editable: true,
-			// loading: function(bool){
-			//  if (bool) 
-			//      $('#loading').show();
-			//  else 
-			//      $('#loading').hide();
-			//  },
+			 /*loading: function(bool){
+			  if (bool) 
+			      $('#loading').show();
+			  else 
+			      $('#loading').hide();
+			  },*/
 			viewDisplay : function(view) {
-			  var data = renderEvents();
+			  if ((view.name == "month") && !(view.title in viewHash)){
+			    viewHash[view.title] = true;
+			    renderEvents();}
+			  
 			},
 			header : {
 			left : 'prev,next today',
@@ -116,7 +126,7 @@
 			//{"id" : 14, "title":"bladescription","description":"watn schei\u00df","start":"2013-01-23","end":"2013-01-23"}
 			
 			}],
-			color : 'yellow', // an option!
+			color : 'blue', // an option!
 			textColor : 'black', // an option!
 			backgroundColor : 'green',
 			className : 'requestItem'
@@ -124,7 +134,6 @@
 		     
 
 	);
-
   });
 </script>
 
