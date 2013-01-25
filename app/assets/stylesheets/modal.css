@@ -1,4 +1,6 @@
-#searchbar {margin-top: 50 px;}
+<style>
+ 
+/* Z-index of #mask must lower than #boxes .window */
 #mask {
   position:absolute;
   z-index:9000;
@@ -12,7 +14,8 @@
   height:200px;
   display:none;
   z-index:9999;
-  padding:20px;
+  padding:5px;
+  padding-left:  80px;
 }
  
  
@@ -20,4 +23,6 @@
 #boxes #dialog {
   width:375px;
   height:203px;
+  background-color: rgb(230,230,170);
 }
+</style>

@@ -1,9 +1,15 @@
 <%#= javascript_include_tag "application", :recursive => true %>
+<%= stylesheet_link_tag "modal"%>
 
+<%= javascript_include_tag "launchWindow" %>
 
+<%= @event = nil  %>
+<%#= render 'modal', locals: { :event => @event } %>
 
 
 <script>
+  
+  
 
    // var $calE = null;
   
@@ -71,9 +77,56 @@
     // alert('finished rendering RequestItems');
 
   }
+ 
   
   
   $(document).ready(function(){
+	  
+	  
+	    $('a[name=modal]').click(function(e) {
+	       //Cancel the link behavior
+	       e.preventDefault();
+	       //Get the A tag
+	       var id = $(this).attr('href');
+	    
+	       //Get the screen height and width
+	       var maskHeight = $(document).height();
+	       var maskWidth = $(window).width();
+	    
+	       //Set height and width to mask to fill up the whole screen
+	       $('#mask').css({'width':maskWidth,'height':maskHeight});
+		
+	       //transition effect    
+	       $('#mask').fadeIn(1000);   
+	       $('#mask').fadeTo("slow",0.8); 
+	    
+	       //Get the window height and width
+	       var winH = $(window).height();
+	       var winW = $(window).width();
+		      
+	       //Set the popup window to center
+	       $(id).css('top',  winH/2-$(id).height()/2);
+	       $(id).css('left', winW/2-$(id).width()/2);
+	    
+	       //transition effect
+	       $(id).fadeIn(2000);
+	    
+	   });
+	    
+	   //if close button is clicked
+	   $('.window .close').click(function (e) {
+	       //Cancel the link behavior
+	       e.preventDefault();
+	       $('#mask, .window').hide();
+	   });    
+	    
+	   //if mask is clicked
+	   $('#mask').click(function () {
+	       $(this).hide();
+	       $('.window').hide();
+	   });        
+     
+
 		var $tabs = $("#displaymodetab").tabs(
 			{
 				ajaxOptions : {
@@ -106,8 +159,47 @@
 			viewDisplay : function(view) {
 			  if ((view.name == "month") && !(view.title in viewHash)){
 			    viewHash[view.title] = true;
-			    renderEvents();}
+			    renderEvents();
+			    }
 			  
+			},
+			eventClick : function(calEvent, jsEvent, view){
+			      var id = calEvent.id;
+			      $('#dialogBodyEvent').remove();				// clear the body
+			      $.getJSON('/users/<%= escape_javascript(params[:uid]) %>/events/'+calEvent.id, function(data){
+				
+				$('#dialogBody').append($('<div>', {
+				   html:
+				    ' <p><b> Title: </b>' + data['summary'] +
+				    ' <p><b> Start: </b> ' + data['dtstart'] +
+				    ' </p><p><b> End: </b>' + data['dtend'] +
+				    ' </p><p><b> Description: </b> '+  data['description'] +
+				    ' </p><p> <a href=\"/users/'+data['user_id']+'/events/'+data['id']+'/edit\">Edit event</a> ' 
+				    
+				 }).attr('id','dialogBodyEvent'));
+				  
+			      });
+			  /*    jQuery.ajax({
+			        type : 'GET',
+				dataType : 'json',
+				url : '/users/<%= escape_javascript(params[:uid]) %>/events/'+calEvent.id,
+				
+			       success : function(data, textStatus) {
+				
+				//  $("#dialog").html(data);
+				 // alert($("#dialog").html(data));
+				 // $("#document").html(<%= escape_javascript(render 'modal', locals: { :event => @event })%>);
+				 }
+				});
+     */
+			      
+			       
+			      launchWindow("#dialog");
+
+			      //window.location.href = 'events/' + calEvent.id+ '/edit'
+			  },
+			eventMouseover : function(calEvent, jsEvent, view){
+			   
 			},
 			header : {
 			left : 'prev,next today',
@@ -254,3 +346,4 @@
 
 <br />
 
+<%= render :partial => 'modal', :locals => {:event => @event} %>

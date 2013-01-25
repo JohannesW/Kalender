@@ -94,7 +94,9 @@ class EventsController < ApplicationController
   
       respond_to do |format|
         format.html # show.html.erb
-        format.json { render json: @event }
+        format.json { render text: @event.to_json  }
+   #     format.json ( render :json => @event )
+   #       format.json  {render :partial => 'modal', :locals => {:event => @event}}
       end
     else redirect_to "events#index"
     end
@@ -112,12 +114,18 @@ class EventsController < ApplicationController
    end
   end 
 
-
+  
 
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
-    render "edit"
+    respond_to do |format|
+      format.html { render "edit" }
+#      format.js {redirect_to "window.location.href = 'events/' + <%= escape_javascript(params[:id]) %> + '/edit'"}
+      #format.json {render text: "js"}
+        #redirect_to user_edit_event_url(:id => params[:id]) }
+    end
+    
   end
 
   # POST /events
@@ -135,7 +143,7 @@ class EventsController < ApplicationController
       #  format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
-       # format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -147,7 +155,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to user_events_show_url(:id => @event.id, :uid => @event.user_id), notice: 'Event was successfully updated.' }
+        format.html { redirect_to user_events_url(:uid => @event.user_id), notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
